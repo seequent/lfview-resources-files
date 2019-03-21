@@ -1,0 +1,10 @@
+jinja2
+nxpd
+properties_inheritance_graph
+pylint
+pytest
+pytest-cov
+sphinx
+sphinx_rtd_theme
+yapf
+-r ./requirements.txt
