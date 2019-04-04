@@ -109,15 +109,20 @@ class Array(_BaseFile):
 
     @properties.validator('content_length')
     def _validate_content_length(self, change):
-        """Ensure content_length matches specified shape and dtype"""
+        """Ensure content_length matches specified shape and dtype
+
+        content_length may be smaller than the size expected from
+        shape/dtype, if the data is compressed. However, it cannot be
+        larger.
+        """
         if not self.dtype or not self.shape:
             return
         length = np.dtype(ARRAY_DTYPES[self.dtype][0]).itemsize
         for dim in self.shape:
             length *= dim
-        if change['value'] != length:
+        if change['value'] > length:
             raise properties.ValidationError(
-                message='content_length does not correspond to shape/dtype',
+                message='content_length is too large for given shape/dtype',
                 reason='invalid',
                 prop='content_length',
                 instance=self,
