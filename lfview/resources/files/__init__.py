@@ -4,4 +4,4 @@ from .files import Array, Image, Thumbnail
 
 FILES_REGISTRY = base._BaseFile._REGISTRY
 
-__version__ = '0.0.2b0'
+__version__ = '0.0.2'

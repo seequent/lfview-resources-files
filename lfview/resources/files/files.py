@@ -181,7 +181,7 @@ class Image(_BaseFile):
         self._image.close()
 
     def __init__(self, image=None, **kwargs):
-        """Array initialization includes the optional argument image
+        """Image initialization includes the optional argument image
 
         By including this argument, assigning an image file to a
         :class:`properties.Instance` property will coerce the
